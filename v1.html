@@ -120,11 +120,32 @@
   .lang-btn.active{color:var(--ink);font-weight:700}
   .lang-sep{color:var(--line);font-size:.72rem;line-height:1}
 
-  .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--ink)}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--ink);padding:0;align-items:center}
+
+  /* mobile dropdown menu */
+  .mobile-menu{display:none}
 
   @media(max-width:860px){
     nav .navlink{display:none}
+    nav .nav-cta{display:none}
+    nav{gap:1.4rem}
     .menu-btn{display:flex}
+
+    .mobile-menu{
+      display:flex;flex-direction:column;align-items:flex-start;gap:1.6rem;
+      position:fixed;top:0;left:0;right:0;z-index:99;
+      background:rgba(255,255,255,.97);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);
+      padding:5.5rem var(--pad) 2.4rem;
+      transform:translateY(-110%);
+      transition:transform .38s ease;
+    }
+    .mobile-menu.open{transform:translateY(0)}
+    .mobile-menu .navlink{
+      display:block;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+    }
+    .mobile-menu .nav-cta{display:inline-block;margin-top:.4rem}
   }
 
   /* ---------- HERO ---------- */
@@ -404,11 +425,20 @@
       <button type="button" class="lang-btn" data-lang="en">EN</button>
     </div>
     <a href="#contact" class="nav-cta" data-lang-en="Book a Session" data-lang-th="จองคิวถ่ายภาพ">จองคิวถ่ายภาพ</a>
-    <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
       <i data-lucide="menu"></i>
     </button>
   </nav>
 </header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#work" class="navlink" data-lang-en="Work" data-lang-th="ผลงาน">ผลงาน</a>
+  <a href="#services" class="navlink" data-lang-en="Services" data-lang-th="บริการ">บริการ</a>
+  <a href="#studio" class="navlink" data-lang-en="Studio" data-lang-th="สตูดิโอ">สตูดิโอ</a>
+  <a href="#process" class="navlink" data-lang-en="Process" data-lang-th="ขั้นตอน">ขั้นตอน</a>
+  <a href="#contact" class="nav-cta" data-lang-en="Book a Session" data-lang-th="จองคิวถ่ายภาพ">จองคิวถ่ายภาพ</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -574,6 +604,16 @@
   const header = document.getElementById('top');
   const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
   window.addEventListener('scroll', onScroll); onScroll();
+
+  // mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMenu = () => { mobileMenu.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); };
+  menuBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
   // reveal on scroll
   const io = new IntersectionObserver((entries) => {
