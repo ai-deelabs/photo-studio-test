@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Photo Studio BKK — Portrait &amp; Commercial Photography, Bangkok</title>
+<title data-lang-en="Photo Studio BKK — Portrait &amp; Commercial Photography, Bangkok" data-lang-th="Photo Studio BKK — สตูดิโอถ่ายภาพพอร์ตเทรตและงานคอมเมอร์เชียล กรุงเทพฯ">Photo Studio BKK — สตูดิโอถ่ายภาพพอร์ตเทรตและงานคอมเมอร์เชียล กรุงเทพฯ</title>
+<meta name="description"
+  data-lang-en="Photo Studio BKK is a Bangkok-based black-and-white photography studio crafting striking portraits, commercial, and editorial imagery for creative professionals and brands."
+  data-lang-th="Photo Studio BKK สตูดิโอถ่ายภาพขาวดำในกรุงเทพฯ สร้างสรรค์ภาพพอร์ตเทรต งานคอมเมอร์เชียล และเอดิทอเรียลอันโดดเด่นสำหรับครีเอทีฟมืออาชีพและแบรนด์ชั้นนำ"
+  content="Photo Studio BKK สตูดิโอถ่ายภาพขาวดำในกรุงเทพฯ สร้างสรรค์ภาพพอร์ตเทรต งานคอมเมอร์เชียล และเอดิทอเรียลอันโดดเด่นสำหรับครีเอทีฟมืออาชีพและแบรนด์ชั้นนำ" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@0.460.0"></script>
 <style>
   :root{
@@ -13,8 +20,8 @@
     --ash:#8c8c8c;
     --line:#e2e2e2;
     --line-ink:#1c1c1c;
-    --serif:"Times New Roman", Times, Georgia, serif;
-    --sans:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    --serif:"Times New Roman", Times, Georgia, 'Noto Serif Thai', serif;
+    --sans:"Helvetica Neue", Helvetica, Arial, 'Noto Sans Thai', 'Sukhumvit Set', sans-serif;
     --pad:clamp(1.25rem, 5vw, 6rem);
   }
 
@@ -29,6 +36,8 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+    word-break:break-word;
+    overflow-wrap:break-word;
   }
 
   img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.08);}
@@ -97,6 +106,19 @@
     transition:background .3s ease,color .3s ease;
   }
   .nav-cta:hover{background:var(--ink);color:var(--paper)}
+
+  /* ---------- LANGUAGE SWITCH ---------- */
+  .lang-switch{display:flex;align-items:center;gap:.45rem}
+  .lang-btn{
+    background:none;border:none;cursor:pointer;
+    font-family:var(--sans);
+    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+    color:var(--ash);padding:0;line-height:1;
+    transition:color .3s ease;
+  }
+  .lang-btn:hover{color:var(--ink)}
+  .lang-btn.active{color:var(--ink);font-weight:700}
+  .lang-sep{color:var(--line);font-size:.72rem;line-height:1}
 
   .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--ink)}
 
@@ -372,11 +394,16 @@
     <span>BKK · Bangkok</span>
   </a>
   <nav>
-    <a href="#work" class="navlink">Work</a>
-    <a href="#services" class="navlink">Services</a>
-    <a href="#studio" class="navlink">Studio</a>
-    <a href="#process" class="navlink">Process</a>
-    <a href="#contact" class="nav-cta">Book a Session</a>
+    <a href="#work" class="navlink" data-lang-en="Work" data-lang-th="ผลงาน">ผลงาน</a>
+    <a href="#services" class="navlink" data-lang-en="Services" data-lang-th="บริการ">บริการ</a>
+    <a href="#studio" class="navlink" data-lang-en="Studio" data-lang-th="สตูดิโอ">สตูดิโอ</a>
+    <a href="#process" class="navlink" data-lang-en="Process" data-lang-th="ขั้นตอน">ขั้นตอน</a>
+    <div class="lang-switch">
+      <button type="button" class="lang-btn" data-lang="th">TH</button>
+      <span class="lang-sep">/</span>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="#contact" class="nav-cta" data-lang-en="Book a Session" data-lang-th="จองคิวถ่ายภาพ">จองคิวถ่ายภาพ</a>
     <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
       <i data-lucide="menu"></i>
     </button>
@@ -386,25 +413,25 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-copy">
-    <span class="eyebrow">Portrait &amp; Commercial · Est. Bangkok</span>
-    <h1>Light, <em>shadow</em>,<br><span class="stroke">and nothing</span><br>in between.</h1>
-    <p class="lead">A black-and-white photography studio crafting striking portraits and commercial imagery for creative professionals and brands.</p>
+    <span class="eyebrow" data-lang-en="Portrait &amp; Commercial · Est. Bangkok" data-lang-th="พอร์ตเทรต &amp; คอมเมอร์เชียล · ก่อตั้งในกรุงเทพฯ">พอร์ตเทรต &amp; คอมเมอร์เชียล · ก่อตั้งในกรุงเทพฯ</span>
+    <h1><span data-lang-en="Light, " data-lang-th="แสง ">แสง </span><em data-lang-en="shadow" data-lang-th="เงา">เงา</em><span data-lang-en="," data-lang-th=" และ"> และ</span><br><span class="stroke" data-lang-en="and nothing" data-lang-th="ความว่างเปล่า">ความว่างเปล่า</span><br><span data-lang-en="in between." data-lang-th="ที่อยู่ตรงกลาง">ที่อยู่ตรงกลาง</span></h1>
+    <p class="lead" data-lang-en="A black-and-white photography studio crafting striking portraits and commercial imagery for creative professionals and brands." data-lang-th="สตูดิโอถ่ายภาพขาวดำ ผู้สร้างสรรค์ภาพพอร์ตเทรตและงานคอมเมอร์เชียลอันโดดเด่น สำหรับครีเอทีฟมืออาชีพและแบรนด์ชั้นนำ">สตูดิโอถ่ายภาพขาวดำ ผู้สร้างสรรค์ภาพพอร์ตเทรตและงานคอมเมอร์เชียลอันโดดเด่น สำหรับครีเอทีฟมืออาชีพและแบรนด์ชั้นนำ</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn btn-solid">Book a Session <i data-lucide="arrow-up-right"></i></a>
-      <a href="#work" class="btn btn-ghost">View Portfolio</a>
+      <a href="#contact" class="btn btn-solid"><span data-lang-en="Book a Session" data-lang-th="จองคิวถ่ายภาพ">จองคิวถ่ายภาพ</span> <i data-lucide="arrow-up-right"></i></a>
+      <a href="#work" class="btn btn-ghost" data-lang-en="View Portfolio" data-lang-th="ดูผลงาน">ดูผลงาน</a>
     </div>
   </div>
   <div class="hero-img">
     <img src="https://images.unsplash.com/photo-1506863530036-1efeddceb993?w=1100&h=1300&fit=crop" alt="Dramatic black and white studio portrait" />
-    <div class="hero-tag"><i data-lucide="aperture"></i> Shot on medium format</div>
+    <div class="hero-tag"><i data-lucide="aperture"></i> <span data-lang-en="Shot on medium format" data-lang-th="ถ่ายด้วยกล้องมีเดียมฟอร์แมต">ถ่ายด้วยกล้องมีเดียมฟอร์แมต</span></div>
   </div>
 </section>
 
 <!-- STRIP -->
 <div class="strip" aria-hidden="true">
   <div class="strip-track">
-    <span>Portraiture</span><span>Editorial</span><span>Commercial</span><span>Brand Campaigns</span><span>Studio &amp; Location</span><span>Fine Art Prints</span>
-    <span>Portraiture</span><span>Editorial</span><span>Commercial</span><span>Brand Campaigns</span><span>Studio &amp; Location</span><span>Fine Art Prints</span>
+    <span data-lang-en="Portraiture" data-lang-th="ภาพพอร์ตเทรต">ภาพพอร์ตเทรต</span><span data-lang-en="Editorial" data-lang-th="งานเอดิทอเรียล">งานเอดิทอเรียล</span><span data-lang-en="Commercial" data-lang-th="งานคอมเมอร์เชียล">งานคอมเมอร์เชียล</span><span data-lang-en="Brand Campaigns" data-lang-th="แคมเปญแบรนด์">แคมเปญแบรนด์</span><span data-lang-en="Studio &amp; Location" data-lang-th="ในสตูดิโอ &amp; นอกสถานที่">ในสตูดิโอ &amp; นอกสถานที่</span><span data-lang-en="Fine Art Prints" data-lang-th="งานพิมพ์ไฟน์อาร์ต">งานพิมพ์ไฟน์อาร์ต</span>
+    <span data-lang-en="Portraiture" data-lang-th="ภาพพอร์ตเทรต">ภาพพอร์ตเทรต</span><span data-lang-en="Editorial" data-lang-th="งานเอดิทอเรียล">งานเอดิทอเรียล</span><span data-lang-en="Commercial" data-lang-th="งานคอมเมอร์เชียล">งานคอมเมอร์เชียล</span><span data-lang-en="Brand Campaigns" data-lang-th="แคมเปญแบรนด์">แคมเปญแบรนด์</span><span data-lang-en="Studio &amp; Location" data-lang-th="ในสตูดิโอ &amp; นอกสถานที่">ในสตูดิโอ &amp; นอกสถานที่</span><span data-lang-en="Fine Art Prints" data-lang-th="งานพิมพ์ไฟน์อาร์ต">งานพิมพ์ไฟน์อาร์ต</span>
   </div>
 </div>
 
@@ -412,29 +439,29 @@
 <section id="services">
   <div class="sec-head reveal">
     <div>
-      <span class="eyebrow">What we do</span>
-      <h2>Disciplines in monochrome.</h2>
+      <span class="eyebrow" data-lang-en="What we do" data-lang-th="สิ่งที่เราทำ">สิ่งที่เราทำ</span>
+      <h2 data-lang-en="Disciplines in monochrome." data-lang-th="ศาสตร์แห่งภาพขาวดำ">ศาสตร์แห่งภาพขาวดำ</h2>
     </div>
-    <p>Every frame is conceived, lit, and printed in black and white — a deliberate language of contrast, texture, and form.</p>
+    <p data-lang-en="Every frame is conceived, lit, and printed in black and white — a deliberate language of contrast, texture, and form." data-lang-th="ทุกเฟรมถูกคิด จัดแสง และพิมพ์ออกมาเป็นภาพขาวดำ — ภาษาแห่งความตัดกัน พื้นผิว และรูปทรงที่ตั้งใจอย่างพิถีพิถัน">ทุกเฟรมถูกคิด จัดแสง และพิมพ์ออกมาเป็นภาพขาวดำ — ภาษาแห่งความตัดกัน พื้นผิว และรูปทรงที่ตั้งใจอย่างพิถีพิถัน</p>
   </div>
   <div class="services">
     <div class="svc reveal">
       <div class="svc-num">01</div>
       <i data-lucide="user"></i>
-      <h3>Portraiture</h3>
-      <p>Personal and professional portraits built on character — dramatic lighting that reveals rather than flatters.</p>
+      <h3 data-lang-en="Portraiture" data-lang-th="ภาพพอร์ตเทรต">ภาพพอร์ตเทรต</h3>
+      <p data-lang-en="Personal and professional portraits built on character — dramatic lighting that reveals rather than flatters." data-lang-th="ภาพพอร์ตเทรตส่วนตัวและระดับมืออาชีพที่สร้างจากตัวตน — แสงดรามาติกที่เผยตัวตนมากกว่าแต่งเติม">ภาพพอร์ตเทรตส่วนตัวและระดับมืออาชีพที่สร้างจากตัวตน — แสงดรามาติกที่เผยตัวตนมากกว่าแต่งเติม</p>
     </div>
     <div class="svc reveal">
       <div class="svc-num">02</div>
       <i data-lucide="briefcase"></i>
-      <h3>Commercial</h3>
-      <p>Product, brand, and campaign photography with a gallery-grade aesthetic that makes work unmistakably yours.</p>
+      <h3 data-lang-en="Commercial" data-lang-th="งานคอมเมอร์เชียล">งานคอมเมอร์เชียล</h3>
+      <p data-lang-en="Product, brand, and campaign photography with a gallery-grade aesthetic that makes work unmistakably yours." data-lang-th="ภาพถ่ายสินค้า แบรนด์ และแคมเปญ ด้วยสุนทรียะระดับแกลเลอรีที่ทำให้ผลงานเป็นของคุณอย่างไม่มีใครเหมือน">ภาพถ่ายสินค้า แบรนด์ และแคมเปญ ด้วยสุนทรียะระดับแกลเลอรีที่ทำให้ผลงานเป็นของคุณอย่างไม่มีใครเหมือน</p>
     </div>
     <div class="svc reveal">
       <div class="svc-num">03</div>
       <i data-lucide="shirt"></i>
-      <h3>Editorial &amp; Fashion</h3>
-      <p>High-contrast fashion stories for magazines, lookbooks, and creative direction across Bangkok and beyond.</p>
+      <h3 data-lang-en="Editorial &amp; Fashion" data-lang-th="เอดิทอเรียล &amp; แฟชั่น">เอดิทอเรียล &amp; แฟชั่น</h3>
+      <p data-lang-en="High-contrast fashion stories for magazines, lookbooks, and creative direction across Bangkok and beyond." data-lang-th="เรื่องราวแฟชั่นคอนทราสต์สูงสำหรับนิตยสาร ลุคบุ๊ก และงานครีเอทีฟไดเรกชันทั่วกรุงเทพฯ และไกลกว่านั้น">เรื่องราวแฟชั่นคอนทราสต์สูงสำหรับนิตยสาร ลุคบุ๊ก และงานครีเอทีฟไดเรกชันทั่วกรุงเทพฯ และไกลกว่านั้น</p>
     </div>
   </div>
 </section>
@@ -443,31 +470,31 @@
 <section id="work" style="padding-top:0">
   <div class="sec-head reveal">
     <div>
-      <span class="eyebrow">Selected work</span>
-      <h2>A study in contrast.</h2>
+      <span class="eyebrow" data-lang-en="Selected work" data-lang-th="ผลงานคัดสรร">ผลงานคัดสรร</span>
+      <h2 data-lang-en="A study in contrast." data-lang-th="บทศึกษาแห่งความตัดกัน">บทศึกษาแห่งความตัดกัน</h2>
     </div>
-    <p>Frames from recent portrait sittings, commercial shoots, and editorial commissions.</p>
+    <p data-lang-en="Frames from recent portrait sittings, commercial shoots, and editorial commissions." data-lang-th="ภาพจากการถ่ายพอร์ตเทรต งานคอมเมอร์เชียล และงานเอดิทอเรียลล่าสุด">ภาพจากการถ่ายพอร์ตเทรต งานคอมเมอร์เชียล และงานเอดิทอเรียลล่าสุด</p>
   </div>
   <div class="gallery">
     <figure class="tile t1 reveal">
       <img src="https://images.unsplash.com/photo-1558730234-d8b2281b0d00?w=900&h=700&fit=crop" alt="Black and white male portrait" />
-      <figcaption>Portrait · Studio</figcaption>
+      <figcaption data-lang-en="Portrait · Studio" data-lang-th="พอร์ตเทรต · สตูดิโอ">พอร์ตเทรต · สตูดิโอ</figcaption>
     </figure>
     <figure class="tile t2 reveal">
       <img src="https://images.unsplash.com/photo-1603189343302-e603f7add05a?w=700&h=700&fit=crop" alt="Man in black suit, editorial" />
-      <figcaption>Editorial · Tailoring</figcaption>
+      <figcaption data-lang-en="Editorial · Tailoring" data-lang-th="เอดิทอเรียล · สูทตัดเย็บ">เอดิทอเรียล · สูทตัดเย็บ</figcaption>
     </figure>
     <figure class="tile t3 reveal">
       <img src="https://images.unsplash.com/photo-1746733706320-bc3b55dfcd57?w=600&h=600&fit=crop" alt="Seated portrait" />
-      <figcaption>Portrait · Natural light</figcaption>
+      <figcaption data-lang-en="Portrait · Natural light" data-lang-th="พอร์ตเทรต · แสงธรรมชาติ">พอร์ตเทรต · แสงธรรมชาติ</figcaption>
     </figure>
     <figure class="tile t4 reveal">
       <img src="https://images.unsplash.com/photo-1628929732048-bec1d977c53a?w=600&h=600&fit=crop" alt="Camera commercial still" />
-      <figcaption>Commercial · Product</figcaption>
+      <figcaption data-lang-en="Commercial · Product" data-lang-th="คอมเมอร์เชียล · สินค้า">คอมเมอร์เชียล · สินค้า</figcaption>
     </figure>
     <figure class="tile t5 reveal">
       <img src="https://images.unsplash.com/photo-1552393700-42696fb89bfa?w=600&h=600&fit=crop" alt="Fashion portrait in black" />
-      <figcaption>Fashion · Campaign</figcaption>
+      <figcaption data-lang-en="Fashion · Campaign" data-lang-th="แฟชั่น · แคมเปญ">แฟชั่น · แคมเปญ</figcaption>
     </figure>
   </div>
 </section>
@@ -478,14 +505,14 @@
     <img src="https://images.unsplash.com/photo-1672619868507-28132de2e258?w=900&h=1100&fit=crop" alt="Photographer at work in studio" />
   </div>
   <div class="split-copy">
-    <span class="eyebrow">The studio</span>
-    <h2>One city, one palette, one obsession with the frame.</h2>
-    <p>Photo Studio BKK is a Bangkok-based practice devoted entirely to black-and-white image-making. We strip away colour to leave what matters: light, gesture, and presence.</p>
-    <p>From our daylight studio in the heart of the city, we work with individuals, agencies, and brands who want imagery that feels timeless — never trend-bound.</p>
+    <span class="eyebrow" data-lang-en="The studio" data-lang-th="เกี่ยวกับสตูดิโอ">เกี่ยวกับสตูดิโอ</span>
+    <h2 data-lang-en="One city, one palette, one obsession with the frame." data-lang-th="หนึ่งเมือง หนึ่งโทนสี หนึ่งความหลงใหลในทุกเฟรม">หนึ่งเมือง หนึ่งโทนสี หนึ่งความหลงใหลในทุกเฟรม</h2>
+    <p data-lang-en="Photo Studio BKK is a Bangkok-based practice devoted entirely to black-and-white image-making. We strip away colour to leave what matters: light, gesture, and presence." data-lang-th="Photo Studio BKK คือสตูดิโอในกรุงเทพฯ ที่ทุ่มเทให้กับการสร้างสรรค์ภาพขาวดำโดยเฉพาะ เราถอดสีออกเพื่อเหลือไว้แต่สิ่งสำคัญ นั่นคือ แสง ท่วงท่า และการมีอยู่">Photo Studio BKK คือสตูดิโอในกรุงเทพฯ ที่ทุ่มเทให้กับการสร้างสรรค์ภาพขาวดำโดยเฉพาะ เราถอดสีออกเพื่อเหลือไว้แต่สิ่งสำคัญ นั่นคือ แสง ท่วงท่า และการมีอยู่</p>
+    <p data-lang-en="From our daylight studio in the heart of the city, we work with individuals, agencies, and brands who want imagery that feels timeless — never trend-bound." data-lang-th="จากสตูดิโอแสงธรรมชาติใจกลางเมือง เราทำงานร่วมกับบุคคล เอเจนซี และแบรนด์ที่ต้องการภาพอันเหนือกาลเวลา ไม่ยึดติดกับเทรนด์">จากสตูดิโอแสงธรรมชาติใจกลางเมือง เราทำงานร่วมกับบุคคล เอเจนซี และแบรนด์ที่ต้องการภาพอันเหนือกาลเวลา ไม่ยึดติดกับเทรนด์</p>
     <div class="stats">
-      <div class="stat"><div class="num">12+</div><div class="lbl">Years shooting</div></div>
-      <div class="stat"><div class="num">480</div><div class="lbl">Sessions delivered</div></div>
-      <div class="stat"><div class="num">B&amp;W</div><div class="lbl">Only, always</div></div>
+      <div class="stat"><div class="num">12+</div><div class="lbl" data-lang-en="Years shooting" data-lang-th="ปีแห่งการถ่ายภาพ">ปีแห่งการถ่ายภาพ</div></div>
+      <div class="stat"><div class="num">480</div><div class="lbl" data-lang-en="Sessions delivered" data-lang-th="เซสชันที่ส่งมอบ">เซสชันที่ส่งมอบ</div></div>
+      <div class="stat"><div class="num">B&amp;W</div><div class="lbl" data-lang-en="Only, always" data-lang-th="เท่านั้น เสมอ">เท่านั้น เสมอ</div></div>
     </div>
   </div>
 </section>
@@ -494,45 +521,45 @@
 <section id="process">
   <div class="sec-head reveal">
     <div>
-      <span class="eyebrow">How it works</span>
-      <h2>From brief to print.</h2>
+      <span class="eyebrow" data-lang-en="How it works" data-lang-th="ขั้นตอนการทำงาน">ขั้นตอนการทำงาน</span>
+      <h2 data-lang-en="From brief to print." data-lang-th="ตั้งแต่บรีฟจนถึงงานพิมพ์">ตั้งแต่บรีฟจนถึงงานพิมพ์</h2>
     </div>
-    <p>A considered, unhurried process — built to give every subject room to breathe.</p>
+    <p data-lang-en="A considered, unhurried process — built to give every subject room to breathe." data-lang-th="กระบวนการที่พิถีพิถันและไม่เร่งรีบ — ออกแบบมาเพื่อให้ทุกแบบมีพื้นที่หายใจ">กระบวนการที่พิถีพิถันและไม่เร่งรีบ — ออกแบบมาเพื่อให้ทุกแบบมีพื้นที่หายใจ</p>
   </div>
   <div class="process">
-    <div class="step reveal"><div class="n">1</div><h4>Consult</h4><p>We discuss intent, mood, and references to shape a clear visual direction.</p></div>
-    <div class="step reveal"><div class="n">2</div><h4>Light</h4><p>Sets and lighting are built to sculpt your subject in high contrast.</p></div>
-    <div class="step reveal"><div class="n">3</div><h4>Shoot</h4><p>A calm, directed session — medium format, deliberate, no rush.</p></div>
-    <div class="step reveal"><div class="n">4</div><h4>Deliver</h4><p>Hand-finished monochrome edits, delivered digitally and as fine-art prints.</p></div>
+    <div class="step reveal"><div class="n">1</div><h4 data-lang-en="Consult" data-lang-th="ปรึกษา">ปรึกษา</h4><p data-lang-en="We discuss intent, mood, and references to shape a clear visual direction." data-lang-th="เราพูดคุยถึงเจตนา อารมณ์ และภาพอ้างอิง เพื่อกำหนดทิศทางภาพให้ชัดเจน">เราพูดคุยถึงเจตนา อารมณ์ และภาพอ้างอิง เพื่อกำหนดทิศทางภาพให้ชัดเจน</p></div>
+    <div class="step reveal"><div class="n">2</div><h4 data-lang-en="Light" data-lang-th="จัดแสง">จัดแสง</h4><p data-lang-en="Sets and lighting are built to sculpt your subject in high contrast." data-lang-th="ฉากและแสงถูกจัดวางเพื่อปั้นแบบของคุณด้วยคอนทราสต์สูง">ฉากและแสงถูกจัดวางเพื่อปั้นแบบของคุณด้วยคอนทราสต์สูง</p></div>
+    <div class="step reveal"><div class="n">3</div><h4 data-lang-en="Shoot" data-lang-th="ถ่ายภาพ">ถ่ายภาพ</h4><p data-lang-en="A calm, directed session — medium format, deliberate, no rush." data-lang-th="เซสชันที่สงบและมีการกำกับ — กล้องมีเดียมฟอร์แมต พิถีพิถัน ไม่เร่งรีบ">เซสชันที่สงบและมีการกำกับ — กล้องมีเดียมฟอร์แมต พิถีพิถัน ไม่เร่งรีบ</p></div>
+    <div class="step reveal"><div class="n">4</div><h4 data-lang-en="Deliver" data-lang-th="ส่งมอบ">ส่งมอบ</h4><p data-lang-en="Hand-finished monochrome edits, delivered digitally and as fine-art prints." data-lang-th="ภาพขาวดำที่รีทัชด้วยมือ ส่งมอบทั้งไฟล์ดิจิทัลและงานพิมพ์ไฟน์อาร์ต">ภาพขาวดำที่รีทัชด้วยมือ ส่งมอบทั้งไฟล์ดิจิทัลและงานพิมพ์ไฟน์อาร์ต</p></div>
   </div>
 </section>
 
 <!-- TESTIMONIAL -->
 <section style="border-top:1px solid var(--line)">
   <div class="quote reveal">
-    <span class="eyebrow">Client note</span>
-    <blockquote>“They saw something in the absence of colour that no one else did. The campaign felt like art before it ever felt like advertising.”</blockquote>
-    <cite>— Creative Director, Bangkok fashion label</cite>
+    <span class="eyebrow" data-lang-en="Client note" data-lang-th="เสียงจากลูกค้า">เสียงจากลูกค้า</span>
+    <blockquote data-lang-en="“They saw something in the absence of colour that no one else did. The campaign felt like art before it ever felt like advertising.”" data-lang-th="“พวกเขามองเห็นบางสิ่งในความไร้สีที่ไม่มีใครเคยมองเห็น แคมเปญนี้รู้สึกเหมือนงานศิลปะก่อนที่จะเป็นงานโฆษณาเสียอีก”">“พวกเขามองเห็นบางสิ่งในความไร้สีที่ไม่มีใครเคยมองเห็น แคมเปญนี้รู้สึกเหมือนงานศิลปะก่อนที่จะเป็นงานโฆษณาเสียอีก”</blockquote>
+    <cite data-lang-en="— Creative Director, Bangkok fashion label" data-lang-th="— ครีเอทีฟไดเรกเตอร์, แบรนด์แฟชั่นกรุงเทพฯ">— ครีเอทีฟไดเรกเตอร์, แบรนด์แฟชั่นกรุงเทพฯ</cite>
   </div>
 </section>
 
 <!-- CTA / CONTACT -->
 <section id="contact" class="cta">
-  <span class="eyebrow">Let's create</span>
-  <h2>Book a session.</h2>
-  <p>Tell us about your portrait, brand, or editorial project. We'll reply within two working days.</p>
-  <a href="mailto:studio@photostudiobkk.com" class="btn btn-solid">Start a Project <i data-lucide="arrow-up-right"></i></a>
+  <span class="eyebrow" data-lang-en="Let's create" data-lang-th="มาสร้างสรรค์ด้วยกัน">มาสร้างสรรค์ด้วยกัน</span>
+  <h2 data-lang-en="Book a session." data-lang-th="จองเซสชันถ่ายภาพ">จองเซสชันถ่ายภาพ</h2>
+  <p data-lang-en="Tell us about your portrait, brand, or editorial project. We'll reply within two working days." data-lang-th="เล่าให้เราฟังเกี่ยวกับโปรเจกต์พอร์ตเทรต แบรนด์ หรือเอดิทอเรียลของคุณ เราจะตอบกลับภายในสองวันทำการ">เล่าให้เราฟังเกี่ยวกับโปรเจกต์พอร์ตเทรต แบรนด์ หรือเอดิทอเรียลของคุณ เราจะตอบกลับภายในสองวันทำการ</p>
+  <a href="mailto:studio@photostudiobkk.com" class="btn btn-solid"><span data-lang-en="Start a Project" data-lang-th="เริ่มต้นโปรเจกต์">เริ่มต้นโปรเจกต์</span> <i data-lucide="arrow-up-right"></i></a>
   <div class="cta-meta">
     <a href="mailto:studio@photostudiobkk.com"><i data-lucide="mail"></i> studio@photostudiobkk.com</a>
     <a href="tel:+6620000000"><i data-lucide="phone"></i> +66 2 000 0000</a>
-    <a href="#"><i data-lucide="map-pin"></i> Sukhumvit, Bangkok</a>
+    <a href="#"><i data-lucide="map-pin"></i> <span data-lang-en="Sukhumvit, Bangkok" data-lang-th="สุขุมวิท, กรุงเทพฯ">สุขุมวิท, กรุงเทพฯ</span></a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <a href="#top" class="logo"><b>Photo Studio</b><span>BKK · Bangkok</span></a>
-  <div>© 2026 Photo Studio BKK — Black &amp; white, only.</div>
+  <div data-lang-en="© 2026 Photo Studio BKK — Black &amp; white, only." data-lang-th="© 2026 Photo Studio BKK — ขาวดำ เท่านั้น">© 2026 Photo Studio BKK — ขาวดำ เท่านั้น</div>
   <div class="socials">
     <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
     <a href="#" aria-label="Behance"><i data-lucide="dribbble"></i></a>
@@ -555,6 +582,36 @@
   document.querySelectorAll('.reveal').forEach((el,i) => {
     el.style.transitionDelay = (i % 3) * 0.08 + 's';
     io.observe(el);
+  });
+
+  // ---------- BILINGUAL (TH default / EN) ----------
+  const LANG_KEY = 'psbkk_lang';
+
+  function setLang(lang){
+    if(lang !== 'en' && lang !== 'th') lang = 'th';
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-lang-' + lang + ']').forEach(el => {
+      const val = el.getAttribute('data-lang-' + lang);
+      if(val == null) return;
+      if(el.tagName === 'TITLE'){ el.textContent = val; }
+      else if(el.tagName === 'META'){ el.setAttribute('content', val); }
+      else { el.textContent = val; }
+    });
+
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+
+    try { localStorage.setItem(LANG_KEY, lang); } catch(e){}
+  }
+
+  let saved = null;
+  try { saved = localStorage.getItem(LANG_KEY); } catch(e){}
+  setLang(saved === 'en' ? 'en' : 'th');
+
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.addEventListener('click', () => setLang(b.dataset.lang));
   });
 </script>
 </body>
