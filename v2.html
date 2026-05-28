@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Photo Studio BKK — Portrait &amp; Commercial Photography in Bangkok</title>
+<script src="https://unpkg.com/lucide@0.460.0"></script>
+<style>
+  :root{
+    --ink:#0a0a0a;
+    --paper:#ffffff;
+    --ash:#f2f2f0;
+    --grey:#8a8a88;
+    --line:#1a1a1a;
+    --gut:clamp(20px,5vw,72px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.08)}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--ink);color:var(--paper)}
+
+  /* Typography */
+  h1,h2,h3{font-weight:700;letter-spacing:-0.03em;line-height:0.98}
+  .serif{font-family:"Times New Roman",Georgia,serif}
+  .eyebrow{
+    font-size:11px;letter-spacing:0.42em;text-transform:uppercase;
+    font-weight:600;color:var(--grey);
+  }
+
+  /* Layout helpers */
+  .wrap{padding-left:var(--gut);padding-right:var(--gut)}
+  section{position:relative}
+
+  /* Header */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px var(--gut);
+    mix-blend-mode:difference;color:#fff;
+  }
+  .logo{font-weight:700;font-size:18px;letter-spacing:-0.02em;line-height:1.05}
+  .logo small{display:block;font-size:8.5px;letter-spacing:0.45em;font-weight:600;margin-top:3px}
+  nav{display:flex;gap:34px;align-items:center}
+  nav a{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;opacity:.85;transition:opacity .3s}
+  nav a:hover{opacity:1}
+  .nav-links{display:flex;gap:34px}
+  .burger{display:none;background:none;border:none;color:#fff;cursor:pointer}
+
+  /* Hero */
+  .hero{min-height:100svh;display:grid;grid-template-columns:1fr;align-items:end;padding-top:120px;padding-bottom:48px}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--gut);align-items:end}
+  .hero h1{font-size:clamp(56px,14vw,200px);text-transform:uppercase}
+  .hero h1 .thin{font-weight:300}
+  .hero-line{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+  .hero-num{font-size:11px;letter-spacing:0.3em;color:var(--grey);font-weight:600}
+  .hero-media{aspect-ratio:3/4;overflow:hidden;position:relative}
+  .hero-media img{transform:scale(1.02)}
+  .hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:40px;flex-wrap:wrap}
+  .hero-foot p{max-width:42ch;font-size:15px;color:#2a2a2a}
+  .scroll-cue{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--grey)}
+  .scroll-cue i{width:16px;height:16px;animation:bob 1.8s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+  /* Marquee */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;overflow:hidden;white-space:nowrap}
+  .marquee-track{display:inline-flex;gap:48px;animation:slide 28s linear infinite}
+  .marquee span{font-family:"Times New Roman",Georgia,serif;font-size:clamp(28px,5vw,52px);font-style:italic;letter-spacing:-0.02em}
+  .marquee span::after{content:"\002022";margin-left:48px;font-style:normal;color:var(--grey)}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* Section heading */
+  .sec-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;padding:clamp(70px,11vw,140px) 0 clamp(40px,6vw,72px)}
+  .sec-head .idx{font-size:12px;letter-spacing:0.2em;color:var(--grey);font-weight:600;padding-top:10px}
+  .sec-head h2{font-size:clamp(38px,8vw,108px);text-transform:uppercase}
+
+  /* Services */
+  .services{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line)}
+  .svc{padding:clamp(32px,5vw,56px) clamp(24px,3vw,40px);border-bottom:1px solid var(--line);position:relative;transition:background .4s,color .4s}
+  .svc:nth-child(odd){border-right:1px solid var(--line)}
+  .svc:hover{background:var(--ink);color:var(--paper)}
+  .svc:hover .svc-no,.svc:hover p{color:#c9c9c9}
+  .svc-no{font-size:12px;letter-spacing:0.2em;color:var(--grey);font-weight:600}
+  .svc h3{font-size:clamp(24px,3.4vw,40px);margin:28px 0 16px;text-transform:uppercase;line-height:1}
+  .svc p{font-size:14.5px;color:#4a4a4a;max-width:40ch}
+  .svc i{width:22px;height:22px;margin-top:30px}
+
+  /* Gallery / Work */
+  .work{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(10px,1.4vw,20px);padding-bottom:clamp(40px,6vw,80px)}
+  .tile{overflow:hidden;position:relative}
+  .tile img{transition:transform 1.1s cubic-bezier(.2,.7,.2,1),filter .6s}
+  .tile:hover img{transform:scale(1.06);filter:grayscale(100%) contrast(1.2)}
+  .tile .cap{position:absolute;left:0;bottom:0;padding:16px 18px;color:#fff;mix-blend-mode:difference;z-index:2}
+  .tile .cap .t{font-size:13px;letter-spacing:0.05em;font-weight:600}
+  .tile .cap .s{font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:#ddd}
+  .t1{grid-column:span 7;aspect-ratio:4/3}
+  .t2{grid-column:span 5;aspect-ratio:3/4;align-self:end}
+  .t3{grid-column:span 4;aspect-ratio:3/4}
+  .t4{grid-column:span 4;aspect-ratio:3/4;margin-top:clamp(20px,4vw,64px)}
+  .t5{grid-column:span 4;aspect-ratio:3/4}
+
+  /* Approach / split */
+  .split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+  .split-media{aspect-ratio:1/1;overflow:hidden;border-right:1px solid var(--line)}
+  .split-body{padding:clamp(40px,6vw,96px) clamp(28px,4vw,72px);display:flex;flex-direction:column;justify-content:center}
+  .split-body h2{font-size:clamp(32px,5vw,64px);text-transform:uppercase;margin:22px 0 26px}
+  .split-body p{font-size:16px;color:#3a3a3a;max-width:46ch;margin-bottom:18px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:38px;border-top:1px solid var(--line);padding-top:32px}
+  .stat .n{font-size:clamp(34px,5vw,56px);font-weight:700;letter-spacing:-0.04em;line-height:1}
+  .stat .l{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey);margin-top:8px}
+
+  /* Quote */
+  .quote{padding:clamp(80px,13vw,180px) 0;text-align:center}
+  .quote blockquote{font-family:"Times New Roman",Georgia,serif;font-style:italic;font-size:clamp(28px,5.5vw,76px);line-height:1.05;letter-spacing:-0.02em;max-width:18ch;margin:0 auto}
+  .quote .who{margin-top:40px;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--grey)}
+
+  /* CTA */
+  .cta{background:var(--ink);color:var(--paper);padding:clamp(70px,11vw,150px) var(--gut)}
+  .cta .eyebrow{color:#888}
+  .cta h2{font-size:clamp(44px,11vw,150px);text-transform:uppercase;margin:26px 0 0;line-height:0.92}
+  .cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-top:48px}
+  .cta-btn{display:inline-flex;align-items:center;gap:14px;border:1px solid #fff;color:#fff;padding:20px 34px;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;transition:background .35s,color .35s}
+  .cta-btn:hover{background:#fff;color:var(--ink)}
+  .cta-btn i{width:18px;height:18px}
+  .cta-info{display:flex;gap:48px;flex-wrap:wrap;font-size:14px;color:#bbb}
+  .cta-info b{display:block;color:#fff;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px}
+
+  /* Footer */
+  footer{padding:clamp(40px,6vw,72px) var(--gut)}
+  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;padding-bottom:40px}
+  .foot-logo{font-size:clamp(38px,9vw,120px);font-weight:700;letter-spacing:-0.04em;text-transform:uppercase;line-height:0.85}
+  .foot-soc{display:flex;gap:18px}
+  .foot-soc a{width:44px;height:44px;border:1px solid var(--line);display:grid;place-items:center;transition:background .3s,color .3s}
+  .foot-soc a:hover{background:var(--ink);color:var(--paper)}
+  .foot-soc i{width:18px;height:18px}
+  .foot-bot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:26px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey)}
+
+  /* Reveal */
+  .rv{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    .nav-links{display:none}
+    .burger{display:block}
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero-media{display:none}
+    .services{grid-template-columns:1fr}
+    .svc:nth-child(odd){border-right:none}
+    .split{grid-template-columns:1fr}
+    .split-media{border-right:none;border-bottom:1px solid var(--line)}
+    .work{grid-template-columns:repeat(6,1fr)}
+    .t1,.t2,.t3,.t4,.t5{grid-column:span 6;aspect-ratio:4/3;margin-top:0;align-self:auto}
+    .sec-head{grid-template-columns:1fr;gap:12px}
+    .sec-head .idx{padding-top:0}
+    .stats{grid-template-columns:1fr;gap:14px}
+    .stat{display:flex;align-items:baseline;gap:16px}
+    .stat .l{margin-top:0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#top" class="logo">PHOTO STUDIO<small>BKK · BANGKOK</small></a>
+  <nav>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#studio">Studio</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><i data-lucide="menu"></i></button>
+  </nav>
+</header>
+
+<section class="hero wrap" id="top">
+  <div>
+    <div class="hero-grid">
+      <div>
+        <div class="hero-line rv in"><span class="eyebrow">Est. Bangkok</span><span class="hero-num">— Portrait &amp; Commercial</span></div>
+        <h1 class="rv in">Light<br><span class="thin">&amp;</span> Shadow</h1>
+      </div>
+      <div class="hero-media rv in">
+        <img src="https://images.unsplash.com/photo-1506863530036-1efeddceb993?w=720&h=960&fit=crop" alt="Black and white studio portrait" loading="eager" />
+      </div>
+    </div>
+    <div class="hero-foot">
+      <p class="rv in">A monochrome photography studio crafting striking portrait and commercial imagery for creative professionals and brands.</p>
+      <div class="scroll-cue rv in"><span>Scroll</span><i data-lucide="arrow-down"></i></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Portrait</span><span>Editorial</span><span>Commercial</span><span>Branding</span><span>Fashion</span>
+    <span>Portrait</span><span>Editorial</span><span>Commercial</span><span>Branding</span><span>Fashion</span>
+  </div>
+</div>
+
+<section class="wrap" id="services">
+  <div class="sec-head rv">
+    <div class="idx">(01)</div>
+    <h2>What<br>We Make</h2>
+  </div>
+</section>
+<div class="services">
+  <div class="svc rv">
+    <div class="svc-no">01 / Portrait</div>
+    <h3>Portrait Sessions</h3>
+    <p>Faces rendered in high contrast. Personal, editorial, and headshot work shaped by deliberate, dramatic light.</p>
+    <i data-lucide="user-round"></i>
+  </div>
+  <div class="svc rv">
+    <div class="svc-no">02 / Commercial</div>
+    <h3>Commercial</h3>
+    <p>Campaign and product imagery for brands who want presence — clean, considered, unmistakably theirs.</p>
+    <i data-lucide="briefcase"></i>
+  </div>
+  <div class="svc rv">
+    <div class="svc-no">03 / Editorial</div>
+    <h3>Editorial &amp; Fashion</h3>
+    <p>Story-driven shoots for magazines and lookbooks, built around movement, texture, and tone.</p>
+    <i data-lucide="layout-template"></i>
+  </div>
+  <div class="svc rv">
+    <div class="svc-no">04 / Studio</div>
+    <h3>Studio Rental</h3>
+    <p>A blacked-out, fully-equipped space in central Bangkok. Continuous and strobe lighting, ready to direct.</p>
+    <i data-lucide="aperture"></i>
+  </div>
+</div>
+
+<section class="wrap" id="work">
+  <div class="sec-head rv">
+    <div class="idx">(02)</div>
+    <h2>Selected<br>Work</h2>
+  </div>
+  <div class="work">
+    <a class="tile t1 rv" href="#contact">
+      <img src="https://images.unsplash.com/photo-1654777673891-1f4a24179dac?w=900&h=675&fit=crop" alt="Editorial portrait" loading="lazy" />
+      <div class="cap"><div class="t">Hands &amp; Light</div><div class="s">Editorial</div></div>
+    </a>
+    <a class="tile t2 rv" href="#contact">
+      <img src="https://images.unsplash.com/photo-1558730234-d8b2281b0d00?w=640&h=853&fit=crop" alt="Studio portrait of a man" loading="lazy" />
+      <div class="cap"><div class="t">Profile No.4</div><div class="s">Portrait</div></div>
+    </a>
+    <a class="tile t3 rv" href="#contact">
+      <img src="https://images.unsplash.com/photo-1645561305502-63a9ba09ab09?w=560&h=746&fit=crop" alt="Fashion editorial model" loading="lazy" />
+      <div class="cap"><div class="t">Coat Study</div><div class="s">Fashion</div></div>
+    </a>
+    <a class="tile t4 rv" href="#contact">
+      <img src="https://images.unsplash.com/photo-1603189343302-e603f7add05a?w=560&h=746&fit=crop" alt="Man in suit jacket" loading="lazy" />
+      <div class="cap"><div class="t">The Suit</div><div class="s">Commercial</div></div>
+    </a>
+    <a class="tile t5 rv" href="#contact">
+      <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?w=560&h=746&fit=crop" alt="Dramatic studio portrait" loading="lazy" />
+      <div class="cap"><div class="t">Low Key</div><div class="s">Portrait</div></div>
+    </a>
+  </div>
+</section>
+
+<section class="split" id="studio">
+  <div class="split-media rv">
+    <img src="https://images.unsplash.com/photo-1549882391-b7fb5ac67fcc?w=900&h=900&fit=crop" alt="Photographer holding a camera" loading="lazy" />
+  </div>
+  <div class="split-body rv">
+    <div class="eyebrow">(03) — The Studio</div>
+    <h2>Form Over Colour</h2>
+    <p>We work exclusively in black and white. Stripping away colour leaves only what matters — light, shape, gesture, and feeling. Every frame is built around contrast and intention.</p>
+    <p>Based in Bangkok, Photo Studio BKK partners with brands, agencies, and individuals who understand that a single, striking image can say more than a hundred ordinary ones.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">12+</div><div class="l">Years Shooting</div></div>
+      <div class="stat"><div class="n">340</div><div class="l">Projects Delivered</div></div>
+      <div class="stat"><div class="n">B&amp;W</div><div class="l">Always</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="quote wrap">
+  <blockquote class="rv">“Colour is a distraction. We chase the light.”</blockquote>
+  <div class="who rv">— Photo Studio BKK</div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="eyebrow">(04) — Let's Create</div>
+  <h2>Book the<br>Studio</h2>
+  <div class="cta-row">
+    <a class="cta-btn" href="mailto:hello@photostudiobkk.com">Start a Project <i data-lucide="arrow-up-right"></i></a>
+    <div class="cta-info">
+      <div><b>Studio</b>Sukhumvit Soi 24<br>Bangkok 10110, TH</div>
+      <div><b>Enquiries</b>hello@photostudiobkk.com<br>+66 2 000 0000</div>
+      <div><b>Hours</b>Mon – Sat<br>09:00 – 19:00 ICT</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div class="foot-logo">Photo<br>Studio BKK</div>
+    <div class="foot-soc">
+      <a href="#contact" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+      <a href="#contact" aria-label="Behance"><i data-lucide="dribbble"></i></a>
+      <a href="#contact" aria-label="Email"><i data-lucide="mail"></i></a>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© 2026 Photo Studio BKK</span>
+    <span>Portrait · Commercial · Editorial</span>
+    <span>Bangkok, Thailand</span>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  // Mobile menu (simple jump-to + visual feedback)
+  document.getElementById('burger').addEventListener('click',()=>{
+    document.querySelector('#work').scrollIntoView({behavior:'smooth'});
+  });
+</script>
+</body>
+</html>

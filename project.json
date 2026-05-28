@@ -1,0 +1,23 @@
+{
+  "slug": "photo-studio-test",
+  "brand_dna": "Photo Studio BKK is a photography studio in Bangkok specializing in portrait and commercial photography. The aesthetic is strictly black and white — monochrome throughout, high contrast, dramatic lighting feel. Clean, gallery-like presentation with generous whitespace. The studio targets creative professionals and brands looking for striking visual content.",
+  "variant_count": 2,
+  "client_id": null,
+  "tags": [],
+  "generated_at": "2026-05-28T18:56:26Z",
+  "prompt_template": "variant.md",
+  "actions": [
+    {
+      "type": "generate",
+      "at": "2026-05-28T18:58:26Z",
+      "variants": {
+        "v1": {
+          "size_bytes": 20687
+        },
+        "v2": {
+          "size_bytes": 16453
+        }
+      }
+    }
+  ]
+}
