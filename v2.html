@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Photo Studio BKK — Portrait &amp; Commercial Photography in Bangkok</title>
+<title>Photo Studio BKK — ถ่ายภาพพอร์ตเทรตและภาพโฆษณาในกรุงเทพฯ</title>
+<meta name="description" content="Photo Studio BKK — สตูดิโอถ่ายภาพขาวดำในกรุงเทพฯ รับงานพอร์ตเทรต ภาพโฆษณา และเอดิทอเรียลสำหรับแบรนด์และมืออาชีพสายครีเอทีฟ" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <script src="https://unpkg.com/lucide@0.460.0"></script>
 <style>
   :root{
@@ -23,7 +27,26 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+    word-break:break-word;
+    overflow-wrap:break-word;
   }
+
+  /* Thai typography */
+  html[lang="th"] body{
+    font-family:'Noto Sans Thai','Sukhumvit Set',"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  html[lang="th"] .serif,
+  html[lang="th"] .marquee span,
+  html[lang="th"] .quote blockquote{
+    font-family:'Noto Serif Thai','Sukhumvit Set',"Times New Roman",Georgia,serif;
+  }
+
+  /* Language switcher */
+  .lang-switch{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.16em;font-weight:600}
+  .lang-switch button{background:none;border:none;color:inherit;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:uppercase;padding:0;opacity:.55;transition:opacity .3s}
+  .lang-switch button:hover{opacity:1}
+  .lang-switch button.active{opacity:1;text-decoration:underline;text-underline-offset:4px}
+  .lang-switch .sep{opacity:.4}
   img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.08)}
   a{color:inherit;text-decoration:none}
   ::selection{background:var(--ink);color:var(--paper)}
@@ -172,10 +195,15 @@
   <a href="#top" class="logo">PHOTO STUDIO<small>BKK · BANGKOK</small></a>
   <nav>
     <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#services">Services</a>
-      <a href="#studio">Studio</a>
-      <a href="#contact">Contact</a>
+      <a href="#work" data-lang-th="ผลงาน" data-lang-en="Work">ผลงาน</a>
+      <a href="#services" data-lang-th="บริการ" data-lang-en="Services">บริการ</a>
+      <a href="#studio" data-lang-th="สตูดิโอ" data-lang-en="Studio">สตูดิโอ</a>
+      <a href="#contact" data-lang-th="ติดต่อ" data-lang-en="Contact">ติดต่อ</a>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-set-lang="th">TH</button>
+      <span class="sep">/</span>
+      <button type="button" data-set-lang="en">EN</button>
     </div>
     <button class="burger" id="burger" aria-label="Menu"><i data-lucide="menu"></i></button>
   </nav>
@@ -185,56 +213,56 @@
   <div>
     <div class="hero-grid">
       <div>
-        <div class="hero-line rv in"><span class="eyebrow">Est. Bangkok</span><span class="hero-num">— Portrait &amp; Commercial</span></div>
-        <h1 class="rv in">Light<br><span class="thin">&amp;</span> Shadow</h1>
+        <div class="hero-line rv in"><span class="eyebrow" data-lang-th="ก่อตั้งในกรุงเทพฯ" data-lang-en="Est. Bangkok">ก่อตั้งในกรุงเทพฯ</span><span class="hero-num" data-lang-th="— ภาพพอร์ตเทรต &amp; ภาพโฆษณา" data-lang-en="— Portrait &amp; Commercial">— ภาพพอร์ตเทรต &amp; ภาพโฆษณา</span></div>
+        <h1 class="rv in" data-lang-th="แสง<br><span class='thin'>&amp;</span> เงา" data-lang-en="Light<br><span class='thin'>&amp;</span> Shadow">แสง<br><span class="thin">&amp;</span> เงา</h1>
       </div>
       <div class="hero-media rv in">
         <img src="https://images.unsplash.com/photo-1506863530036-1efeddceb993?w=720&h=960&fit=crop" alt="Black and white studio portrait" loading="eager" />
       </div>
     </div>
     <div class="hero-foot">
-      <p class="rv in">A monochrome photography studio crafting striking portrait and commercial imagery for creative professionals and brands.</p>
-      <div class="scroll-cue rv in"><span>Scroll</span><i data-lucide="arrow-down"></i></div>
+      <p class="rv in" data-lang-th="สตูดิโอถ่ายภาพขาวดำ ที่สร้างสรรค์ภาพพอร์ตเทรตและภาพโฆษณาอันโดดเด่น สำหรับมืออาชีพสายครีเอทีฟและแบรนด์ต่าง ๆ" data-lang-en="A monochrome photography studio crafting striking portrait and commercial imagery for creative professionals and brands.">สตูดิโอถ่ายภาพขาวดำ ที่สร้างสรรค์ภาพพอร์ตเทรตและภาพโฆษณาอันโดดเด่น สำหรับมืออาชีพสายครีเอทีฟและแบรนด์ต่าง ๆ</p>
+      <div class="scroll-cue rv in"><span data-lang-th="เลื่อนลง" data-lang-en="Scroll">เลื่อนลง</span><i data-lucide="arrow-down"></i></div>
     </div>
   </div>
 </section>
 
 <div class="marquee">
   <div class="marquee-track">
-    <span>Portrait</span><span>Editorial</span><span>Commercial</span><span>Branding</span><span>Fashion</span>
-    <span>Portrait</span><span>Editorial</span><span>Commercial</span><span>Branding</span><span>Fashion</span>
+    <span data-lang-th="พอร์ตเทรต" data-lang-en="Portrait">พอร์ตเทรต</span><span data-lang-th="เอดิทอเรียล" data-lang-en="Editorial">เอดิทอเรียล</span><span data-lang-th="งานโฆษณา" data-lang-en="Commercial">งานโฆษณา</span><span data-lang-th="แบรนด์ดิ้ง" data-lang-en="Branding">แบรนด์ดิ้ง</span><span data-lang-th="แฟชั่น" data-lang-en="Fashion">แฟชั่น</span>
+    <span data-lang-th="พอร์ตเทรต" data-lang-en="Portrait">พอร์ตเทรต</span><span data-lang-th="เอดิทอเรียล" data-lang-en="Editorial">เอดิทอเรียล</span><span data-lang-th="งานโฆษณา" data-lang-en="Commercial">งานโฆษณา</span><span data-lang-th="แบรนด์ดิ้ง" data-lang-en="Branding">แบรนด์ดิ้ง</span><span data-lang-th="แฟชั่น" data-lang-en="Fashion">แฟชั่น</span>
   </div>
 </div>
 
 <section class="wrap" id="services">
   <div class="sec-head rv">
     <div class="idx">(01)</div>
-    <h2>What<br>We Make</h2>
+    <h2 data-lang-th="สิ่งที่<br>เราสร้างสรรค์" data-lang-en="What<br>We Make">สิ่งที่<br>เราสร้างสรรค์</h2>
   </div>
 </section>
 <div class="services">
   <div class="svc rv">
-    <div class="svc-no">01 / Portrait</div>
-    <h3>Portrait Sessions</h3>
-    <p>Faces rendered in high contrast. Personal, editorial, and headshot work shaped by deliberate, dramatic light.</p>
+    <div class="svc-no" data-lang-th="01 / พอร์ตเทรต" data-lang-en="01 / Portrait">01 / พอร์ตเทรต</div>
+    <h3 data-lang-th="เซสชันถ่ายภาพพอร์ตเทรต" data-lang-en="Portrait Sessions">เซสชันถ่ายภาพพอร์ตเทรต</h3>
+    <p data-lang-th="ใบหน้าที่ถ่ายทอดด้วยคอนทราสต์จัดจ้าน ทั้งงานส่วนตัว เอดิทอเรียล และเฮดช็อต รังสรรค์ด้วยแสงที่จงใจและทรงพลัง" data-lang-en="Faces rendered in high contrast. Personal, editorial, and headshot work shaped by deliberate, dramatic light.">ใบหน้าที่ถ่ายทอดด้วยคอนทราสต์จัดจ้าน ทั้งงานส่วนตัว เอดิทอเรียล และเฮดช็อต รังสรรค์ด้วยแสงที่จงใจและทรงพลัง</p>
     <i data-lucide="user-round"></i>
   </div>
   <div class="svc rv">
-    <div class="svc-no">02 / Commercial</div>
-    <h3>Commercial</h3>
-    <p>Campaign and product imagery for brands who want presence — clean, considered, unmistakably theirs.</p>
+    <div class="svc-no" data-lang-th="02 / โฆษณา" data-lang-en="02 / Commercial">02 / โฆษณา</div>
+    <h3 data-lang-th="งานโฆษณา" data-lang-en="Commercial">งานโฆษณา</h3>
+    <p data-lang-th="ภาพแคมเปญและภาพสินค้าสำหรับแบรนด์ที่ต้องการความโดดเด่น สะอาดตา พิถีพิถัน และเป็นตัวตนของแบรนด์อย่างแท้จริง" data-lang-en="Campaign and product imagery for brands who want presence — clean, considered, unmistakably theirs.">ภาพแคมเปญและภาพสินค้าสำหรับแบรนด์ที่ต้องการความโดดเด่น สะอาดตา พิถีพิถัน และเป็นตัวตนของแบรนด์อย่างแท้จริง</p>
     <i data-lucide="briefcase"></i>
   </div>
   <div class="svc rv">
-    <div class="svc-no">03 / Editorial</div>
-    <h3>Editorial &amp; Fashion</h3>
-    <p>Story-driven shoots for magazines and lookbooks, built around movement, texture, and tone.</p>
+    <div class="svc-no" data-lang-th="03 / เอดิทอเรียล" data-lang-en="03 / Editorial">03 / เอดิทอเรียล</div>
+    <h3 data-lang-th="เอดิทอเรียล &amp; แฟชั่น" data-lang-en="Editorial &amp; Fashion">เอดิทอเรียล &amp; แฟชั่น</h3>
+    <p data-lang-th="งานถ่ายภาพเชิงเล่าเรื่องสำหรับนิตยสารและลุคบุ๊ก สร้างสรรค์จากการเคลื่อนไหว พื้นผิว และโทนภาพ" data-lang-en="Story-driven shoots for magazines and lookbooks, built around movement, texture, and tone.">งานถ่ายภาพเชิงเล่าเรื่องสำหรับนิตยสารและลุคบุ๊ก สร้างสรรค์จากการเคลื่อนไหว พื้นผิว และโทนภาพ</p>
     <i data-lucide="layout-template"></i>
   </div>
   <div class="svc rv">
-    <div class="svc-no">04 / Studio</div>
-    <h3>Studio Rental</h3>
-    <p>A blacked-out, fully-equipped space in central Bangkok. Continuous and strobe lighting, ready to direct.</p>
+    <div class="svc-no" data-lang-th="04 / สตูดิโอ" data-lang-en="04 / Studio">04 / สตูดิโอ</div>
+    <h3 data-lang-th="เช่าสตูดิโอ" data-lang-en="Studio Rental">เช่าสตูดิโอ</h3>
+    <p data-lang-th="พื้นที่ถ่ายภาพโทนมืดพร้อมอุปกรณ์ครบครันใจกลางกรุงเทพฯ ทั้งไฟต่อเนื่องและไฟแฟลช พร้อมสำหรับทุกการกำกับภาพ" data-lang-en="A blacked-out, fully-equipped space in central Bangkok. Continuous and strobe lighting, ready to direct.">พื้นที่ถ่ายภาพโทนมืดพร้อมอุปกรณ์ครบครันใจกลางกรุงเทพฯ ทั้งไฟต่อเนื่องและไฟแฟลช พร้อมสำหรับทุกการกำกับภาพ</p>
     <i data-lucide="aperture"></i>
   </div>
 </div>
@@ -242,28 +270,28 @@
 <section class="wrap" id="work">
   <div class="sec-head rv">
     <div class="idx">(02)</div>
-    <h2>Selected<br>Work</h2>
+    <h2 data-lang-th="ผลงาน<br>คัดสรร" data-lang-en="Selected<br>Work">ผลงาน<br>คัดสรร</h2>
   </div>
   <div class="work">
     <a class="tile t1 rv" href="#contact">
       <img src="https://images.unsplash.com/photo-1654777673891-1f4a24179dac?w=900&h=675&fit=crop" alt="Editorial portrait" loading="lazy" />
-      <div class="cap"><div class="t">Hands &amp; Light</div><div class="s">Editorial</div></div>
+      <div class="cap"><div class="t" data-lang-th="มือ &amp; แสง" data-lang-en="Hands &amp; Light">มือ &amp; แสง</div><div class="s" data-lang-th="เอดิทอเรียล" data-lang-en="Editorial">เอดิทอเรียล</div></div>
     </a>
     <a class="tile t2 rv" href="#contact">
       <img src="https://images.unsplash.com/photo-1558730234-d8b2281b0d00?w=640&h=853&fit=crop" alt="Studio portrait of a man" loading="lazy" />
-      <div class="cap"><div class="t">Profile No.4</div><div class="s">Portrait</div></div>
+      <div class="cap"><div class="t" data-lang-th="โปรไฟล์ หมายเลข 4" data-lang-en="Profile No.4">โปรไฟล์ หมายเลข 4</div><div class="s" data-lang-th="พอร์ตเทรต" data-lang-en="Portrait">พอร์ตเทรต</div></div>
     </a>
     <a class="tile t3 rv" href="#contact">
       <img src="https://images.unsplash.com/photo-1645561305502-63a9ba09ab09?w=560&h=746&fit=crop" alt="Fashion editorial model" loading="lazy" />
-      <div class="cap"><div class="t">Coat Study</div><div class="s">Fashion</div></div>
+      <div class="cap"><div class="t" data-lang-th="ศึกษาเสื้อโค้ท" data-lang-en="Coat Study">ศึกษาเสื้อโค้ท</div><div class="s" data-lang-th="แฟชั่น" data-lang-en="Fashion">แฟชั่น</div></div>
     </a>
     <a class="tile t4 rv" href="#contact">
       <img src="https://images.unsplash.com/photo-1603189343302-e603f7add05a?w=560&h=746&fit=crop" alt="Man in suit jacket" loading="lazy" />
-      <div class="cap"><div class="t">The Suit</div><div class="s">Commercial</div></div>
+      <div class="cap"><div class="t" data-lang-th="สูท" data-lang-en="The Suit">สูท</div><div class="s" data-lang-th="โฆษณา" data-lang-en="Commercial">โฆษณา</div></div>
     </a>
     <a class="tile t5 rv" href="#contact">
       <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?w=560&h=746&fit=crop" alt="Dramatic studio portrait" loading="lazy" />
-      <div class="cap"><div class="t">Low Key</div><div class="s">Portrait</div></div>
+      <div class="cap"><div class="t" data-lang-th="โลว์คีย์" data-lang-en="Low Key">โลว์คีย์</div><div class="s" data-lang-th="พอร์ตเทรต" data-lang-en="Portrait">พอร์ตเทรต</div></div>
     </a>
   </div>
 </section>
@@ -273,32 +301,32 @@
     <img src="https://images.unsplash.com/photo-1549882391-b7fb5ac67fcc?w=900&h=900&fit=crop" alt="Photographer holding a camera" loading="lazy" />
   </div>
   <div class="split-body rv">
-    <div class="eyebrow">(03) — The Studio</div>
-    <h2>Form Over Colour</h2>
-    <p>We work exclusively in black and white. Stripping away colour leaves only what matters — light, shape, gesture, and feeling. Every frame is built around contrast and intention.</p>
-    <p>Based in Bangkok, Photo Studio BKK partners with brands, agencies, and individuals who understand that a single, striking image can say more than a hundred ordinary ones.</p>
+    <div class="eyebrow" data-lang-th="(03) — สตูดิโอ" data-lang-en="(03) — The Studio">(03) — สตูดิโอ</div>
+    <h2 data-lang-th="รูปทรงเหนือสีสัน" data-lang-en="Form Over Colour">รูปทรงเหนือสีสัน</h2>
+    <p data-lang-th="เราทำงานด้วยภาพขาวดำเพียงอย่างเดียว การตัดสีสันออกไปเหลือไว้เพียงสิ่งสำคัญ นั่นคือแสง รูปทรง ท่วงท่า และความรู้สึก ทุกเฟรมถูกสร้างขึ้นรอบคอนทราสต์และความตั้งใจ" data-lang-en="We work exclusively in black and white. Stripping away colour leaves only what matters — light, shape, gesture, and feeling. Every frame is built around contrast and intention.">เราทำงานด้วยภาพขาวดำเพียงอย่างเดียว การตัดสีสันออกไปเหลือไว้เพียงสิ่งสำคัญ นั่นคือแสง รูปทรง ท่วงท่า และความรู้สึก ทุกเฟรมถูกสร้างขึ้นรอบคอนทราสต์และความตั้งใจ</p>
+    <p data-lang-th="Photo Studio BKK ตั้งอยู่ในกรุงเทพฯ ร่วมงานกับแบรนด์ เอเจนซี และบุคคลที่เข้าใจว่าภาพเพียงภาพเดียวที่ทรงพลัง สื่อสารได้มากกว่าภาพธรรมดานับร้อย" data-lang-en="Based in Bangkok, Photo Studio BKK partners with brands, agencies, and individuals who understand that a single, striking image can say more than a hundred ordinary ones.">Photo Studio BKK ตั้งอยู่ในกรุงเทพฯ ร่วมงานกับแบรนด์ เอเจนซี และบุคคลที่เข้าใจว่าภาพเพียงภาพเดียวที่ทรงพลัง สื่อสารได้มากกว่าภาพธรรมดานับร้อย</p>
     <div class="stats">
-      <div class="stat"><div class="n">12+</div><div class="l">Years Shooting</div></div>
-      <div class="stat"><div class="n">340</div><div class="l">Projects Delivered</div></div>
-      <div class="stat"><div class="n">B&amp;W</div><div class="l">Always</div></div>
+      <div class="stat"><div class="n">12+</div><div class="l" data-lang-th="ปีแห่งการถ่ายภาพ" data-lang-en="Years Shooting">ปีแห่งการถ่ายภาพ</div></div>
+      <div class="stat"><div class="n">340</div><div class="l" data-lang-th="โปรเจกต์ที่ส่งมอบ" data-lang-en="Projects Delivered">โปรเจกต์ที่ส่งมอบ</div></div>
+      <div class="stat"><div class="n">B&amp;W</div><div class="l" data-lang-th="เสมอ" data-lang-en="Always">เสมอ</div></div>
     </div>
   </div>
 </section>
 
 <section class="quote wrap">
-  <blockquote class="rv">“Colour is a distraction. We chase the light.”</blockquote>
+  <blockquote class="rv" data-lang-th="“สีสันคือสิ่งรบกวน เราไล่ตามแสง”" data-lang-en="“Colour is a distraction. We chase the light.”">“สีสันคือสิ่งรบกวน เราไล่ตามแสง”</blockquote>
   <div class="who rv">— Photo Studio BKK</div>
 </section>
 
 <section class="cta" id="contact">
-  <div class="eyebrow">(04) — Let's Create</div>
-  <h2>Book the<br>Studio</h2>
+  <div class="eyebrow" data-lang-th="(04) — มาสร้างสรรค์กัน" data-lang-en="(04) — Let's Create">(04) — มาสร้างสรรค์กัน</div>
+  <h2 data-lang-th="จอง<br>สตูดิโอ" data-lang-en="Book the<br>Studio">จอง<br>สตูดิโอ</h2>
   <div class="cta-row">
-    <a class="cta-btn" href="mailto:hello@photostudiobkk.com">Start a Project <i data-lucide="arrow-up-right"></i></a>
+    <a class="cta-btn" href="mailto:hello@photostudiobkk.com"><span data-lang-th="เริ่มต้นโปรเจกต์" data-lang-en="Start a Project">เริ่มต้นโปรเจกต์</span> <i data-lucide="arrow-up-right"></i></a>
     <div class="cta-info">
-      <div><b>Studio</b>Sukhumvit Soi 24<br>Bangkok 10110, TH</div>
-      <div><b>Enquiries</b>hello@photostudiobkk.com<br>+66 2 000 0000</div>
-      <div><b>Hours</b>Mon – Sat<br>09:00 – 19:00 ICT</div>
+      <div data-lang-th="<b>สตูดิโอ</b>สุขุมวิท ซอย 24<br>กรุงเทพฯ 10110" data-lang-en="<b>Studio</b>Sukhumvit Soi 24<br>Bangkok 10110, TH"><b>สตูดิโอ</b>สุขุมวิท ซอย 24<br>กรุงเทพฯ 10110</div>
+      <div data-lang-th="<b>ติดต่อสอบถาม</b>hello@photostudiobkk.com<br>+66 2 000 0000" data-lang-en="<b>Enquiries</b>hello@photostudiobkk.com<br>+66 2 000 0000"><b>ติดต่อสอบถาม</b>hello@photostudiobkk.com<br>+66 2 000 0000</div>
+      <div data-lang-th="<b>เวลาทำการ</b>จันทร์ – เสาร์<br>09:00 – 19:00 น." data-lang-en="<b>Hours</b>Mon – Sat<br>09:00 – 19:00 ICT"><b>เวลาทำการ</b>จันทร์ – เสาร์<br>09:00 – 19:00 น.</div>
     </div>
   </div>
 </section>
@@ -314,8 +342,8 @@
   </div>
   <div class="foot-bot">
     <span>© 2026 Photo Studio BKK</span>
-    <span>Portrait · Commercial · Editorial</span>
-    <span>Bangkok, Thailand</span>
+    <span data-lang-th="พอร์ตเทรต · โฆษณา · เอดิทอเรียล" data-lang-en="Portrait · Commercial · Editorial">พอร์ตเทรต · โฆษณา · เอดิทอเรียล</span>
+    <span data-lang-th="กรุงเทพฯ ประเทศไทย" data-lang-en="Bangkok, Thailand">กรุงเทพฯ ประเทศไทย</span>
   </div>
 </footer>
 
@@ -332,6 +360,36 @@
   document.getElementById('burger').addEventListener('click',()=>{
     document.querySelector('#work').scrollIntoView({behavior:'smooth'});
   });
+
+  // Language switcher (pure client-side, persists in localStorage)
+  (function(){
+    var STORE_KEY = 'psbkk-lang';
+    var nodes = document.querySelectorAll('[data-lang-th][data-lang-en]');
+    var buttons = document.querySelectorAll('.lang-switch [data-set-lang]');
+
+    function applyLang(lang){
+      if(lang !== 'en') lang = 'th';
+      document.documentElement.setAttribute('lang', lang);
+      nodes.forEach(function(el){
+        var val = el.getAttribute('data-lang-' + lang);
+        if(val !== null) el.innerHTML = val; // markup (<br>,<span>,<b>) preserved
+      });
+      buttons.forEach(function(btn){
+        btn.classList.toggle('active', btn.getAttribute('data-set-lang') === lang);
+      });
+      try{ localStorage.setItem(STORE_KEY, lang); }catch(e){}
+    }
+
+    var saved;
+    try{ saved = localStorage.getItem(STORE_KEY); }catch(e){}
+    applyLang(saved === 'en' ? 'en' : 'th'); // Thai is the default
+
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        applyLang(btn.getAttribute('data-set-lang'));
+      });
+    });
+  })();
 </script>
 </body>
 </html>
